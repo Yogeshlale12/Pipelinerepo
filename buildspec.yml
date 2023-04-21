@@ -1,12 +1,20 @@
 version: 0.2
-
 phases:
-  Build:
+  install:
     commands:
-     - echo "This is build phase... zipping my webpage"
+     - echo "install phase started"
+     - npm install
+     - echo "install phase ended"
+  pre_build: 
+    commands:
+     - echo "pre_build aka test phase started"
+     - echo "mocha unit test"
+     - npm test
+     - echo "mocha unit test ended"
   build:
     commands:
-    - echo "Deployed to s3"
+     - echo "build phase started"
+     - echo "build complete"
 artifacts:
   files:
     - '**/*'
